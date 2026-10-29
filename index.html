@@ -654,6 +654,151 @@
         margin: 0 auto 8px;
         opacity: 0.9;
       }
+    /* Registration countdown (batch 1 special price) */
+    .countdown-box {
+      margin: 14px 0 4px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: #fff7e6;
+      border: 1px dashed #e0a800;
+      text-align: center;
+    }
+    .countdown-box .cd-label {
+      display: block;
+      font-size: 14px;
+      color: #8a6d00;
+      margin-bottom: 4px;
+    }
+    .countdown-box .cd-time {
+      font-size: 17px;
+      color: #1a1a1a;
+    }
+    .countdown-box .cd-time b {
+      font-size: 22px;
+      color: #c2410c;
+      min-width: 2ch;
+      display: inline-block;
+    }
+    .countdown-box .cd-closed {
+      font-size: 16px;
+      font-weight: 700;
+      color: #b91c1c;
+    }
+    .btn-pay.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    /* Floating LINE OA contact bubble (bottom-right) */
+    #line-oa-fab {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    #line-oa-fab .fab-btn {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #06c755;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fab-bounce 3s ease-in-out infinite;
+      padding: 0;
+    }
+    #line-oa-fab .fab-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    #line-oa-fab .fab-btn::before,
+    #line-oa-fab .fab-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid #06c755;
+      animation: fab-ring 2.4s ease-out infinite;
+      pointer-events: none;
+    }
+    #line-oa-fab .fab-btn::after {
+      animation-delay: 1.2s;
+    }
+    @keyframes fab-ring {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+    @keyframes fab-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    #line-oa-card {
+      display: none;
+      width: 260px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+      padding: 18px;
+      text-align: left;
+      position: relative;
+    }
+    #line-oa-fab.open #line-oa-card {
+      display: block;
+      animation: card-pop 0.25s ease-out;
+    }
+    @keyframes card-pop {
+      from { transform: translateY(10px) scale(0.96); opacity: 0; }
+      to { transform: none; opacity: 1; }
+    }
+    #line-oa-card .card-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #888;
+      padding: 4px;
+    }
+    #line-oa-card .card-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin: 0 0 6px;
+      color: #1a1a1a;
+    }
+    #line-oa-card .card-sub {
+      font-size: 14px;
+      margin: 0 0 12px;
+      color: #555;
+    }
+    #line-oa-card .card-btn {
+      display: block;
+      text-align: center;
+      background: #06c755;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #line-oa-fab .fab-btn,
+      #line-oa-fab .fab-btn::before,
+      #line-oa-fab .fab-btn::after {
+        animation: none;
+      }
+    }
     </style>
   </head>
   <body>
@@ -932,6 +1077,18 @@
         </div>
         <div class="price-card">
           <span class="batch">รุ่นแรกพิเศษ · 10 คนแรกเท่านั้น</span>
+          <div
+            class="countdown-box"
+            id="reg-countdown"
+            role="timer"
+            aria-live="polite"
+          >
+            <span class="cd-label">⏳ ปิดรับสมัครรุ่นแรกราคาพิเศษในอีก</span>
+            <span class="cd-time"
+              ><b id="cd-d">–</b> วัน <b id="cd-h">–</b> ชม.
+              <b id="cd-m">–</b> นาที <b id="cd-s">–</b> วินาที</span
+            >
+          </div>
           <div class="price-row">
             <span class="price-now">399</span>
             <span class="price-unit">บาท / คน</span>
@@ -1201,5 +1358,82 @@
       </footer>
     </div>
 
+    <!-- Floating LINE OA contact bubble -->
+    <div id="line-oa-fab" aria-label="ติดต่อสอบถามทาง LINE">
+      <div id="line-oa-card" role="dialog" aria-label="สอบถามเพิ่มเติม">
+        <button class="card-close" aria-label="ปิด">×</button>
+        <p class="card-title">มีคำถามเกี่ยวกับคอร์ส?</p>
+        <p class="card-sub">ทักแชทมาถามได้เลย แอดมินตอบในแชท 1:1</p>
+        <a
+          class="card-btn"
+          href="https://line.me/R/ti/p/@065ofsrt"
+          target="_blank"
+          rel="noopener"
+        >
+          แชท LINE OA @065ofsrt
+        </a>
+      </div>
+      <button class="fab-btn" aria-label="เปิดหน้าต่างสอบถาม">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2C6.48 2 2 6.02 2 11.06c0 2.86 1.44 5.42 3.7 7.1-.14.52-.52 1.9-.6 2.2-.1.36-.32.44-.66.26-.34-.17-1.5-.74-2.1-1.06-.42.06-.86.1-1.3.1C6.48 19.66 2 15.64 2 10.6 2 5.56 6.48 1.54 12 1.54S22 5.56 22 10.6s-4.48 9.06-10 9.06c-.5 0-1-.04-1.48-.12l-.34 2.2c-.05.32-.28.4-.56.22-.28-.17-1.72-1.03-2.4-1.5A9.86 9.86 0 0 1 2 10.6C2 5.56 6.48 1.54 12 1.54S22 5.56 22 10.6 17.52 19.66 12 19.66"
+          />
+          <path
+            d="M7 9.5h10M7 12.5h6"
+            stroke="#06c755"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <script>
+      (function () {
+        // Batch-1 special-price registration deadline: end of 1 Nov 2026 (Bangkok).
+        // When it passes, the countdown shows "closed" and signup buttons disable.
+        var deadline = new Date("2026-11-01T23:59:59+07:00").getTime();
+        var box = document.getElementById("reg-countdown");
+        if (!box) return;
+        function tick() {
+          var diff = deadline - Date.now();
+          if (diff <= 0) {
+            box.innerHTML =
+              '<span class="cd-closed">ปิดรับสมัครรุ่นแรกราคาพิเศษแล้ว</span>';
+            document.querySelectorAll(".btn-pay").forEach(function (a) {
+              a.classList.add("is-disabled");
+              a.setAttribute("aria-disabled", "true");
+            });
+            clearInterval(timer);
+            return;
+          }
+          var d = Math.floor(diff / 864e5),
+            h = Math.floor(diff / 36e5) % 24,
+            m = Math.floor(diff / 6e4) % 60,
+            s = Math.floor(diff / 1e3) % 60;
+          document.getElementById("cd-d").textContent = d;
+          document.getElementById("cd-h").textContent = h;
+          document.getElementById("cd-m").textContent = m;
+          document.getElementById("cd-s").textContent = s;
+        }
+        var timer = setInterval(tick, 1000);
+        tick();
+      })();
+    </script>
+    <script>
+      (function () {
+        var fab = document.getElementById("line-oa-fab");
+        if (!fab) return;
+        fab
+          .querySelector(".fab-btn")
+          .addEventListener("click", function () {
+            fab.classList.toggle("open");
+          });
+        fab
+          .querySelector(".card-close")
+          .addEventListener("click", function () {
+            fab.classList.remove("open");
+          });
+      })();
+    </script>
   </body>
 </html>
