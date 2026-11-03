@@ -684,6 +684,42 @@
       font-weight: 700;
       color: #b91c1c;
     }
+    .countdown-box .cd-open {
+      font-size: 16px;
+      font-weight: 700;
+      color: #15803d;
+    }
+    /* Live seat count (batch 1) — filled from the published SeatCount CSV */
+    .seat-box {
+      margin: 10px 0 4px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: #f0fdf4;
+      border: 1px dashed #16a34a;
+      text-align: center;
+    }
+    .seat-box .seat-label {
+      display: block;
+      font-size: 16px;
+      color: #14532d;
+    }
+    .seat-box .seat-label b {
+      font-size: 24px;
+      color: #15803d;
+      min-width: 2ch;
+      display: inline-block;
+    }
+    .seat-box .seat-sub {
+      display: block;
+      font-size: 12px;
+      color: #4d7c5f;
+      margin-top: 2px;
+    }
+    .seat-box .seat-full {
+      font-size: 16px;
+      font-weight: 700;
+      color: #b91c1c;
+    }
     .btn-pay.is-disabled {
       opacity: 0.5;
       pointer-events: none;
@@ -850,10 +886,10 @@
             target="_blank"
             rel="noopener"
           >
-            สมัครเข้าร่วม Community — กรอกข้อมูล + จ่าย 399 บาท
+            สมัครเข้าร่วม Community — กรอกข้อมูล + จ่าย 599 บาท
           </a>
           <span class="btn-note"
-            >กรอกข้อมูลและจ่าย 399 บาทในหน้าเดียว (ดูวิธีสมัครทั้งหมดด้านล่าง)</span
+            >กรอกข้อมูลและจ่าย 599 บาทในหน้าเดียว (ดูวิธีสมัครทั้งหมดด้านล่าง)</span
           >
         </div>
       </header>
@@ -991,7 +1027,7 @@
           <article class="session">
             <div class="when">
               <div class="dow">วันอังคาร</div>
-              <div class="date">3 พ.ย.</div>
+              <div class="date">เร็ว ๆ นี้</div>
               <div class="time">2569 · 20:00 น.<br />สอนสด 90 นาที</div>
             </div>
             <div>
@@ -1011,7 +1047,7 @@
           <article class="session">
             <div class="when">
               <div class="dow">วันอังคาร</div>
-              <div class="date">10 พ.ย.</div>
+              <div class="date">เร็ว ๆ นี้</div>
               <div class="time">2569 · 20:00 น.<br />สอนสด 90 นาที</div>
             </div>
             <div>
@@ -1031,7 +1067,7 @@
           <article class="session">
             <div class="when">
               <div class="dow">วันอังคาร</div>
-              <div class="date">17 พ.ย.</div>
+              <div class="date">เร็ว ๆ นี้</div>
               <div class="time">2569 · 20:00 น.<br />สอนสด 90 นาที</div>
             </div>
             <div>
@@ -1042,7 +1078,7 @@
                 และวางระบบกินของตัวเองให้ทำต่อได้ยาว ๆ หลังจบโปรแกรม
               </p>
               <p class="homework">
-                <b>จากวันนี้:</b> เข้าสู่ช่วงฝึกต่อในกลุ่ม ใช้สิ่งที่เรียนมากับทุกมื้อของตัวเอง ถึงวันที่ 22 พฤศจิกายน 2569
+                <b>จากวันนี้:</b> เข้าสู่ช่วงฝึกต่อในกลุ่ม ใช้สิ่งที่เรียนมากับทุกมื้อของตัวเอง
               </p>
             </div>
           </article>
@@ -1050,11 +1086,11 @@
           <article class="session practice">
             <div class="when">
               <div class="dow">ช่วงฝึก</div>
-              <div class="date">2–22 พ.ย.</div>
+              <div class="date">เร็ว ๆ นี้</div>
               <div class="time">2569<br />Line OpenChat ส่วนตัว</div>
             </div>
             <div>
-              <h3>ฝึกในกลุ่มตลอดโปรแกรม ถึงวันที่ 22 พฤศจิกายน 2569</h3>
+              <h3>ฝึกในกลุ่มตลอดโปรแกรม</h3>
               <p>
                 ส่ง food log ทุกวันในกลุ่ม Line OpenChat ส่วนตัว
                 มีการตรวจและสรุปจุดที่พลาดรวมให้สัปดาห์ละ 2–3 ครั้ง
@@ -1089,10 +1125,18 @@
               <b id="cd-m">–</b> นาที <b id="cd-s">–</b> วินาที</span
             >
           </div>
+          <div class="seat-box" id="seat-count" hidden>
+            <span class="seat-label"
+              >🪑 เหลืออีก <b id="seat-num">–</b> ที่นั่ง</span
+            >
+            <span class="seat-sub"
+              >จากทั้งหมด 10 ที่นั่ง · ตัวเลขอัปเดตอัตโนมัติเมื่อมีผู้ชำระเงิน</span
+            >
+          </div>
           <div class="price-row">
-            <span class="price-now">399</span>
+            <span class="price-now">599</span>
             <span class="price-unit">บาท / คน</span>
-            <span class="price-was">ราคาปกติ 1,999 บาท</span>
+            <span class="price-was">ราคาปกติ 1,990 บาท</span>
           </div>
           <p class="price-cond">
             ราคานี้เป็นราคาพิเศษสำหรับผู้เรียนรุ่นแรก 10 คนแรก
@@ -1102,7 +1146,7 @@
           <div class="pay-info">
             <b>ช่องทางชำระเงิน: Stripe</b>
             <ul>
-              <li>จ่าย <b>399 บาท</b> จากราคาปกติ 1,999 บาท (THB)</li>
+              <li>จ่าย <b>599 บาท</b> จากราคาปกติ 1,990 บาท (THB)</li>
               <li>ผู้รับชำระ: <b>Academy</b></li>
               <li>วิธีจ่าย: PromptPay, บัตร Visa / Mastercard และ Apple Pay</li>
               <li>
@@ -1118,7 +1162,7 @@
               target="_blank"
               rel="noopener"
             >
-              สมัคร + จ่าย 399 บาท
+              สมัคร + จ่าย 599 บาท
             </a>
             <span class="btn-note"
               >สมัครและจ่ายในหน้าเดียวผ่าน Stripe Checkout — ผู้รับชำระ Academy ·
@@ -1138,7 +1182,7 @@
           </p>
         </div>
         <div style="background:#eef7e8;border:2px solid #2e9e5b;border-radius:12px;padding:16px 20px;margin-bottom:18px;font-size:1.05em;line-height:1.7">
-          <b>สมัคร 3 ขั้นตอนต่อกัน:</b> ① กรอกข้อมูล ② จ่าย 399 บาทในหน้าเดียว ③ แอด LINE OA @065ofsrt แจ้งชื่อ + อีเมล แล้วรอแอดมินยืนยันและส่งลิงก์เชิญกลุ่มให้
+          <b>สมัคร 3 ขั้นตอนต่อกัน:</b> ① กรอกข้อมูล ② จ่าย 599 บาทในหน้าเดียว ③ แอด LINE OA @065ofsrt แจ้งชื่อ + อีเมล แล้วรอแอดมินยืนยันและส่งลิงก์เชิญกลุ่มให้
         </div>
         <div class="card">
           <ol class="steps">
@@ -1160,7 +1204,7 @@
                   ตามข้อควรทราบด้านสุขภาพในหน้านี้
                 </p>
                 <p>
-                  กรอกครบแล้วกดไปจ่าย <b>399 บาท</b> ในหน้าเดียวกันได้ทันที —
+                  กรอกครบแล้วกดไปจ่าย <b>599 บาท</b> ในหน้าเดียวกันได้ทันที —
                   ข้อมูลสมัครจะผูกกับยอดจ่ายอัตโนมัติ ไม่ต้องกรอกซ้ำ
                 </p>
                 <a
@@ -1178,7 +1222,7 @@
               <div>
                 <b>จ่ายเงินผ่าน Stripe Checkout</b>
                 <p>
-                  จ่าย 399 บาท จากราคาปกติ 1,999 บาท ผ่าน Stripe Checkout
+                  จ่าย 599 บาท จากราคาปกติ 1,990 บาท ผ่าน Stripe Checkout
                   (ผู้รับชำระ Academy · PromptPay / บัตร Visa / Mastercard / Apple Pay · ใส่รหัสโปรโมชันได้ถ้ามี)
                 </p>
               </div>
@@ -1288,7 +1332,7 @@
           <summary>food log ที่ต้องส่งคืออะไร</summary>
           <p class="a">
             คือบันทึกอาหารที่กินจริงในแต่ละวัน ส่งเข้ามาในกลุ่ม Line OpenChat
-            ในช่วงฝึก (ทุกวัน ถึงวันที่ 22 พฤศจิกายน 2569)
+            ในช่วงฝึก (ทุกวันตลอดโปรแกรม)
             เพื่อใช้ฝึกประมาณสารอาหารร่วมกัน
             โดยจะมีสรุปจุดที่พลาดรวมให้สัปดาห์ละ 2–3 ครั้ง
             และใน สอนสด ครั้งที่ 2 จะหยิบ log มาฝึกแก้ร่วมกันแบบไม่เปิดเผยชื่อเจ้าของ
@@ -1307,7 +1351,7 @@
         </details>
 
         <details class="faq-item">
-          <summary>ทำไมรุ่นแรกราคา 399 บาท จากราคาปกติ 1,999 บาท</summary>
+          <summary>ทำไมรุ่นแรกราคา 599 บาท จากราคาปกติ 1,990 บาท</summary>
           <p class="a">
             เพราะเป็นรุ่นแรกที่เปิดสอนในรูปแบบนี้ จึงตั้งราคาพิเศษสำหรับ 10 คนแรก
             แลกกับการช่วยส่ง feedback ระหว่างเรียน และให้ testimonial หลังจบโปรแกรม
@@ -1343,10 +1387,10 @@
             target="_blank"
             rel="noopener"
           >
-            สมัครเข้าร่วม Community — กรอกข้อมูล + จ่าย 399 บาท
+            สมัครเข้าร่วม Community — กรอกข้อมูล + จ่าย 599 บาท
           </a>
           <span class="btn-note"
-            >กรอกข้อมูลและจ่าย 399 บาทในหน้าเดียว ตามส่วน “วิธีสมัคร” ด้านบน</span
+            >กรอกข้อมูลและจ่าย 599 บาทในหน้าเดียว ตามส่วน “วิธีสมัคร” ด้านบน</span
           >
         </div>
       </section>
@@ -1389,34 +1433,56 @@
     </div>
     <script>
       (function () {
-        // Batch-1 special-price registration deadline: end of 1 Nov 2026 (Bangkok).
-        // When it passes, the countdown shows "closed" and signup buttons disable.
-        var deadline = new Date("2026-11-01T23:59:59+07:00").getTime();
+        // Registration is OPEN with no closing date (per 2026-11-03 order).
+        // The countdown box shows open status; signup buttons stay enabled.
+        // To set a closing date later, restore a deadline-based countdown here.
         var box = document.getElementById("reg-countdown");
         if (!box) return;
-        function tick() {
-          var diff = deadline - Date.now();
-          if (diff <= 0) {
-            box.innerHTML =
-              '<span class="cd-closed">ปิดรับสมัครรุ่นแรกราคาพิเศษแล้ว</span>';
-            document.querySelectorAll(".btn-pay").forEach(function (a) {
-              a.classList.add("is-disabled");
-              a.setAttribute("aria-disabled", "true");
+        box.innerHTML = '<span class="cd-open">เปิดรับสมัครแล้ว</span>';
+      })();
+    </script>
+    <script>
+      (function () {
+        // Live seat count: reads the published SeatCount CSV (counts only real
+        // paid rows, test ฿0 rows excluded). On any failure the box stays
+        // hidden — never show a guessed number.
+        var TOTAL_SEATS = 10;
+        var CSV_URL = ""; // TODO: paste the published SeatCount CSV link here
+        var box = document.getElementById("seat-count");
+        if (!box || !CSV_URL) return;
+        fetch(CSV_URL, { cache: "no-store" })
+          .then(function (r) {
+            if (!r.ok) throw new Error("csv");
+            return r.text();
+          })
+          .then(function (t) {
+            var paid = null;
+            t.split(/\r?\n/).forEach(function (line) {
+              var parts = line.split(",");
+              if (
+                parts.length >= 2 &&
+                parts[0].replace(/"/g, "").trim() === "ยอดจ่ายจริง"
+              ) {
+                paid = parseInt(parts[1].replace(/"/g, "").trim(), 10);
+              }
             });
-            clearInterval(timer);
-            return;
-          }
-          var d = Math.floor(diff / 864e5),
-            h = Math.floor(diff / 36e5) % 24,
-            m = Math.floor(diff / 6e4) % 60,
-            s = Math.floor(diff / 1e3) % 60;
-          document.getElementById("cd-d").textContent = d;
-          document.getElementById("cd-h").textContent = h;
-          document.getElementById("cd-m").textContent = m;
-          document.getElementById("cd-s").textContent = s;
-        }
-        var timer = setInterval(tick, 1000);
-        tick();
+            if (paid === null || isNaN(paid) || paid < 0) return; // stay hidden
+            var left = TOTAL_SEATS - paid;
+            box.hidden = false;
+            if (left <= 0) {
+              box.innerHTML =
+                '<span class="seat-full">ที่นั่งรุ่นแรกเต็มแล้ว</span>';
+              document.querySelectorAll(".btn-pay").forEach(function (a) {
+                a.classList.add("is-disabled");
+                a.setAttribute("aria-disabled", "true");
+              });
+            } else {
+              document.getElementById("seat-num").textContent = left;
+            }
+          })
+          .catch(function () {
+            /* stay hidden */
+          });
       })();
     </script>
     <script>
